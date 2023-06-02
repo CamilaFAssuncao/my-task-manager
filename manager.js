@@ -24,14 +24,6 @@
 //     rl.close();
 // });
 
-
-// function deleteTask (task) {
-
-// }
-
-// MY TASK MANAGER - TERMINAL
-
-// SETUP CODE
 var prompt = require("prompt-sync")();
 
 let tasks = ["task1", "task2", "task3"];
