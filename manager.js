@@ -1,93 +1,130 @@
-// // MY TASK MANAGER - TERMINAL
 
-// // SETUP CODE
-// const fs = require('fs');
-// const readline = require('readline');
-// var rl = readline.createInterface(process.stdin, process.stdout);
+//Terminal - Setup code
+// var prompt = require("prompt-sync")();
 
-// let tasks = ["task1", "task2", "task3"]
+// let tasks = ["task1", "task2", "task3"];
 
-// let menu = "Welcome to your task manager, Press: 1. to see all your tasks 2. to add a task 3. to delete a task 4. to mark a task as done 5. to Exit the task manager"
+// function Menu() {
+//   console.log(
+//     "Welcome to your task manager, Press:\n1. to see all your tasks\n2. to add a task\n3. to delete a task\n4. to mark a task as done\n5. to Exit the task manager"
+//   );
+//   var number = prompt();
+//   if (number == 1) {
+//     console.log(tasks);
+//     console.log(Menu());
+//     return "";
+//   }
+//   if (number == 2) {
+//     var add = prompt("add a task : ");
+//     tasks.push(add);
+//     console.log(Menu());
+//     return "";    
+//   }
+
+//   if (number == 3) {
+//         let remove = prompt ("delete a task: ")
+//         tasks.pop (remove);
+//         console.log(Menu());
+//         return "";
+//   }
+
+//   if (number == 5) {
+//     return "closing";
+//     // console.log("closing the task manager");
+//   }
+// }
+
+// function addtask(add) {
+//   tasks.push(add);
+// }
+
+// function deletetask(remove) {
+//     tasks.pop(remove)
+// }
 
 
-// // const showtasks = () => {
-// //     console.log(tasks)
-// // }
+// console.log(
+//   "Welcome to your task manager, Press:\n1. to see all your tasks\n2. to add a task\n3. to delete a task\n4. to mark a task as done\n5. to Exit the task manager"
+// );
+// var number = prompt();
 
-// // showtasks()
+// if (number == 1) {
+//   console.log(tasks);
+//   console.log(Menu());
+// }
+// if (number == 2) {
+//   var add = prompt("add a task : ");
+//   addtask(add);
+//   console.log(Menu());
+// }
 
-// // EXEMPLE
-// rl.question(menu, (selectionnumber) => {
-//     if( selectionnumber === "1") {
-//         console.log(tasks)
-//     }
-//     rl.close();
-// });
+// if (number == 3) {
+//     let remove = prompt ("delete a task: ")
+//     deletetask (remove);
+//     console.log(Menu());
+// }
 
-var prompt = require("prompt-sync")();
+// if (number == 5) {
+//   console.log("closing the task manager");
+// }
+
+
+
+// SETUP CODE
+let prompt = require("prompt-sync")();
 
 let tasks = ["task1", "task2", "task3"];
 
-function Menu() {
-  console.log(
-    "Welcome to your task manager, Press:\n1. to see all your tasks\n2. to add a task\n3. to delete a task\n4. to mark a task as done\n5. to Exit the task manager"
-  );
-  var number = prompt();
-  if (number == 1) {
-    console.log(tasks);
-    console.log(Menu());
-    return "";
-  }
-  if (number == 2) {
-    var add = prompt("add a task : ");
-    tasks.push(add);
-    console.log(Menu());
-    return "";    
-  }
-
-  if (number == 3) {
-        let remove = prompt ("delete a task: ")
-        tasks.pop (remove);
-        console.log(Menu());
-        return "";
-  }
-
-  if (number == 5) {
-    return "closing";
-    // console.log("closing the task manager");
-  }
-}
+// FUNCTION
 
 function addtask(add) {
   tasks.push(add);
 }
 
-function deletetask(remove) {
-    tasks.pop(remove)
+function deltask(del) {
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i] == del) {
+      tasks.splice(i, 1);
+    }
+  }
 }
 
-
-console.log(
-  "Welcome to your task manager, Press:\n1. to see all your tasks\n2. to add a task\n3. to delete a task\n4. to mark a task as done\n5. to Exit the task manager"
-);
-var number = prompt();
-
-if (number == 1) {
-  console.log(tasks);
-  console.log(Menu());
-}
-if (number == 2) {
-  var add = prompt("add a task : ");
-  addtask(add);
-  console.log(Menu());
+function checktask(check) {
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i] == check) {
+      tasks[i] = tasks[i] + " \u2713";
+    }
+  }
 }
 
-if (number == 3) {
-    let remove = prompt ("delete a task: ")
-    deletetask (remove);
+// EXECUTE
+
+function Menu() {
+  console.log(
+    "Welcome to your task manager, Press:\n1. to see all your tasks\n2. to add a task\n3. to delete a task\n4. to mark a task as done\n5. to Exit the task manager"
+  );
+  let number = prompt();
+  if (number == 1) {
+    console.log(tasks);
     console.log(Menu());
+    return "";
+  } else if (number == 2) {
+    let add = prompt("add a task : ");
+    addtask(add);
+    console.log(Menu());
+    return "";
+  } else if (number == 3) {
+    let del = prompt("delete a task : ");
+    deltask(del);
+    console.log(Menu());
+    return "";
+  } else if (number == 4) {
+    let check = prompt("check a task : ");
+    checktask(check);
+    console.log(Menu());
+    return "";
+  } else if (number == 5) {
+    return "closing";
+  }
 }
-
-if (number == 5) {
-  console.log("closing the task manager");
-}
+console.log(Menu());
