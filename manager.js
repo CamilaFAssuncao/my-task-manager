@@ -36,21 +36,25 @@ function Menu() {
   if (number == 1) {
     console.log(tasks);
     console.log(Menu());
+    return "";
   }
   if (number == 2) {
     var add = prompt("add a task : ");
     tasks.push(add);
-    console.log(Menu());    
+    console.log(Menu());
+    return "";    
   }
 
   if (number == 3) {
-        var remove = prompt ("delete a task: ")
+        let remove = prompt ("delete a task: ")
         tasks.pop (remove);
         console.log(Menu());
+        return "";
   }
 
   if (number == 5) {
-    console.log("closing the task manager");
+    return "closing";
+    // console.log("closing the task manager");
   }
 }
 
@@ -79,7 +83,7 @@ if (number == 2) {
 }
 
 if (number == 3) {
-    var remove = prompt ("delete a task: ")
+    let remove = prompt ("delete a task: ")
     deletetask (remove);
     console.log(Menu());
 }
